@@ -5,6 +5,7 @@ const app = express()
 
 app.use(cookieParser())
 app.set('view engine', 'pug')
+app.set('port', process.env.PORT || 3000)
 
 const listCookies = c => Object.keys(c).map(x => ({ key: x, value: c[x] }))
 
@@ -33,6 +34,6 @@ app.get('/deleteCookie', function (req, res) {
     res.send('Cookie deleted!')
 })
 
-app.listen(3000, function () {
+app.listen(app.get('port'), function () {
     console.log('Example app listening on port 3000!')
 })
