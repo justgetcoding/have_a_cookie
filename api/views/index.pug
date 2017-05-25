@@ -1,0 +1,9 @@
+html
+  head
+    title= title
+  body
+    h1= message
+    p Cookies: #{cookies.length}
+    ul
+        each cookie in cookies
+            li= cookie.key + ": " + cookie.value
