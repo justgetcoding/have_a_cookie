@@ -1,9 +1,41 @@
-html
+doctype html
+html(lang='en')
   head
-    title= title
+    title C is for Cookie
   body
-    h1= message
-    p Cookies: #{cookies.length}
+    h1 Cookies
+    p Cookies detected by server: #{cookies.length}
     ul
-        each cookie in cookies
-            li= cookie.key + ": " + cookie.value
+      each cookie in cookies
+        li= cookie.key + ': ' + cookie.value
+
+    p Cookies detected by client code
+    br
+    span(id='output')
+
+    h2 Set cookies fast
+    a(href='/setCookie') Set a cookie quickly
+    br
+    a(href='/deleteCookie') Delete a cookie quickly
+    br
+    a(href='/setHttpCookie') Set an HttpOnly cookie quickly
+    br
+    a(href='/deleteHttpCookie') Delete an HttpOnly cookie quickly
+
+    form(action='/addCookie', method='POST')
+        h2 New Cookie
+        label(for='key') Key: 
+        input(type='text', name='key', value='')
+        br
+        label(for='value') Value: 
+        input(type='text', name='value', value='')
+        br
+        label(for='httpOnly') HttpOnly 
+        input(type='checkbox', name='httpOnly')   
+
+        input(type='submit', value='Submit')
+
+    h2 Make an XHR Request
+    button(id='xhrRequest') Make an XHR Request
+    
+    script(src='index.js')
